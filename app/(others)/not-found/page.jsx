@@ -1,6 +1,5 @@
 import NotFound from "@/components/not-found/NotFound";
 import Preloader from "@/components/common/Preloader";
-import EventsOne from "@/components/events/EventsOne";
 import Footer from "@/components/layout/footers/Footer";
 import Header from "@/components/layout/headers/Header";
 import React from "react";
