@@ -43,10 +43,15 @@ export default function Header() {
             </div>
           </div>
 
+          <MobileMenu
+            setActiveMobileMenu={setActiveMobileMenu}
+            activeMobileMenu={activeMobileMenu}
+          />
+
           <div className="col-auto">
             <div className="header-right d-flex items-center">
               <div className="header-right__icons text-white d-flex items-center">
-                <div className="d-none xl:d-block pl-30 sm:pl-15">
+                <div className="d-none md:d-block pl-30 sm:pl-15">
                   <button
                     className="text-dark-1 items-center"
                     onClick={() => setActiveMobileMenu(true)}
@@ -57,7 +62,7 @@ export default function Header() {
                 </div>
               </div>
 
-              <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 lg:d-none">
+              <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
                 <Link
                   href="/chef-register"
                   className="button -rounded h-50 px-30 "

@@ -5952,7 +5952,7 @@ h6 {
 }
 
 .masthead.-type-6 .masthead__image img {
-  width: 100%;
+  width: 480px;
 }
 
 .masthead.-type-6 .masthead__title {
@@ -5986,6 +5986,14 @@ h6 {
   }
   .masthead.-type-6 .masthead__title br {
     display: none;
+  }
+
+  .masthead.-type-6 .masthead__image img {
+    width: 40vh;
+  }
+
+  .masthead.-type-6 .masthead__image {
+    margin-right: 0;
   }
 }
 
@@ -7055,8 +7063,8 @@ h6 {
 
 @media (max-width: 767px) {
   .page-header.-type-1 {
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 0;
   }
 }
 
@@ -7067,7 +7075,7 @@ h6 {
 
 @media (max-width: 991px) {
   .page-header.-type-1 .page-header__title {
-    font-size: 35px;
+    font-size: 30px;
     line-height: 40px;
   }
 }

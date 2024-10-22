@@ -13,7 +13,7 @@ export default function page() {
     <div className="main-content  ">
       <Preloader />
       <Header />
-      <div className="content-wrapper  js-content-wrapper overflow-hidden">
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
         <ChefsList />
         <Footer />
       </div>

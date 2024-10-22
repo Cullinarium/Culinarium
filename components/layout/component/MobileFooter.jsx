@@ -1,52 +1,40 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
+import Links from "../component/Links";
+import Socials from "@/components/common/Socials";
+
 export default function MobileFooter() {
   return (
-    <>
-      <div className="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
-        <div className="mobile-footer__number">
-          <div className="text-17 fw-500 text-dark-1">Call us</div>
-          <div className="text-17 fw-500 text-purple-1">800 388 80 90</div>
-        </div>
+    <footer className="footer -type-4 bg-white border-top-light">
+      <div className="container">
+        <div className="py-30 border-top-light-15">
+          <div className="justify-between items-center y-gap-20">
+            <div className="col-auto">
+              <div className="d-flex items-center h-100">
+                <div>+996 709 775 004</div>
+              </div>
+            </div>
+            <div className="col-auto">
+              <div className="d-flex items-center h-100">
+                <Socials
+                  componentsClass={"size-40 d-flex justify-center items-center"}
+                />
+              </div>
+            </div>
 
-        <div className="lh-2 mt-10">
-          <div>
-            329 Queensberry Street,
-            <br /> North Melbourne VIC 3051, Australia.
+            <div className="col-auto">
+              <div className="d-flex x-gap-20 y-gap-20 items-center flex-wrap">
+                <div>
+                  <div className="d-flex flex-column x-gap-15">
+                    <Links />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>hi@educrat.com</div>
-        </div>
-
-        <div className="mobile-socials mt-10">
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-facebook"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-twitter"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-instagram"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-linkedin"></i>
-          </Link>
         </div>
       </div>
-    </>
+    </footer>
   );
 }

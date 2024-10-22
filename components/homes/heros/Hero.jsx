@@ -48,9 +48,8 @@ export default function Hero() {
             <div className="col-lg-5" data-aos="fade-up" data-aos-delay="500">
               <div className="masthead__content">
                 <h1 className="masthead__title">
-                  Найдите
-                  <br />
-                  <span style={{ color: "rgb(252,199,39)" }}>шеф-повара</span>
+                  Найдите <br />
+                  <span style={{ color: "rgb(252,199,39)" }}> шеф-повара</span>
                 </h1>
                 <h1 className="masthead__title">Для вашего мероприятия</h1>
                 <div className="row items-center x-gap-20 y-gap-20 pt-20">
@@ -74,7 +73,6 @@ export default function Hero() {
               <div className="masthead__image relative d-flex justify-content-center">
                 <img
                   style={{
-                    width: "480px",
                     borderRadius: "40px",
                     boxShadow: "0px 0px 18px 11px rgba(252,199,39,0.71)",
                   }}
