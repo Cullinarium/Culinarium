@@ -19,7 +19,6 @@
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/react": "^6.1.8",
     "@mui/material": "^5.13.7",
-    "@next/swc-darwin-x64": "^15.0.0",
     "@popperjs/core": "^2.11.8",
     "aos": "^2.3.4",
     "bootstrap": "^5.1.3",
