@@ -150,11 +150,12 @@ export default function EditProfile({ chefId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setBtnLoading(true);
-
-    if (!!chef?.images) {
+    if (!chef?.images?.length) {
       showNotification(`Необходимо добавить изображения блюд`, "danger");
+      return;
     }
+
+    setBtnLoading(true);
 
     try {
       await setDoc(doc(database, "chefs", chefId), chef);
@@ -574,9 +575,9 @@ export default function EditProfile({ chefId }) {
               <button
                 type="submit"
                 className="button -md -purple-1 text-white"
-                disabled={btnLoading}
+                disabled={btnLoading || imagesLoading}
               >
-                {btnLoading ? "Обновляется..." : "Обновить"}
+                {btnLoading || imagesLoading ? "Обновляется..." : "Обновить"}
               </button>
             </div>
 

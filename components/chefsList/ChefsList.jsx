@@ -67,20 +67,18 @@ export default function ChefsList() {
                           <div className="coursesCard__image overflow-hidden rounded-8">
                             {elm?.images?.[0] ? (
                               <Image
-                                width={510}
-                                height={360}
-                                className="w-1/1"
+                                width={300}
+                                height={300}
                                 src={elm?.images[0]}
+                                className="chef-card-image"
                                 alt="image"
                               />
                             ) : (
                               <div
                                 style={{
-                                  width: "510px",
-                                  height: "360px",
                                   backgroundColor: "#d5d4da",
                                 }}
-                                className="w-1/1"
+                                className="chef-card-image"
                               ></div>
                             )}
                             <div className="coursesCard__image_overlay rounded-8"></div>
