@@ -63,7 +63,9 @@ export default function Overview({ chef }) {
                     style={{ transform: "scale(0.7)", opacity: "0.7" }}
                   />
                 </div>
-                <p>Максимум гостей: {chef?.maxGuests}</p>
+                <p>
+                  Максимум гостей: {chef?.maxGuests ? chef?.maxGuests : "-"}
+                </p>
               </div>
 
               <div className="d-flex items-center">
@@ -73,7 +75,9 @@ export default function Overview({ chef }) {
                     style={{ transform: "scale(0.7)", opacity: "0.7" }}
                   />
                 </div>
-                <p>График работы: {chef?.workSchedule}</p>
+                <p>
+                  График работы: {chef?.workSchedule ? chef?.workSchedule : "-"}
+                </p>
               </div>
 
               <div className="d-flex items-center">

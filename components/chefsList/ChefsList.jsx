@@ -65,13 +65,24 @@ export default function ChefsList() {
                       <div className="coursesCard -type-1 ">
                         <div className="relative">
                           <div className="coursesCard__image overflow-hidden rounded-8">
-                            <Image
-                              width={510}
-                              height={360}
-                              className="w-1/1"
-                              src={elm?.images[0]}
-                              alt="image"
-                            />
+                            {elm?.images?.[0] ? (
+                              <Image
+                                width={510}
+                                height={360}
+                                className="w-1/1"
+                                src={elm?.images[0]}
+                                alt="image"
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  width: "510px",
+                                  height: "360px",
+                                  backgroundColor: "#d5d4da",
+                                }}
+                                className="w-1/1"
+                              ></div>
+                            )}
                             <div className="coursesCard__image_overlay rounded-8"></div>
                             <div className="coursesCard-footer__author__avatar">
                               <Image

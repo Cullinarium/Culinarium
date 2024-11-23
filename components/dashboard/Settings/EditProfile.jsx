@@ -2,7 +2,6 @@
 
 import { useNotification } from "@/context/NotificationContext";
 import { database, storage } from "@/firebase";
-import { Button } from "bootstrap";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import {
   deleteObject,
@@ -19,7 +18,7 @@ export default function EditProfile({ chefId }) {
 
   const [chef, setChef] = useState({
     fullName: "",
-    email: "",
+    instagram: "",
     phoneNumber: "",
     whatsapp: "",
     workExperience: "",
@@ -37,10 +36,13 @@ export default function EditProfile({ chefId }) {
   const { showNotification } = useNotification();
   const [btnLoading, setBtnLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [imagesLoading, setImagesLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  console.log(chef, "chef");
+
   const changedHandler = async (event) => {
-    setLoading(true);
+    setImagesLoading(true);
 
     const imageURL = await uploadFile(
       event.target.files[event.target.files.length - 1],
@@ -49,12 +51,16 @@ export default function EditProfile({ chefId }) {
 
     const userRef = doc(database, "chefs", id);
 
-    await updateDoc(userRef, { images: [...chef.images, imageURL] });
+    if (chef?.images?.length > 0) {
+      await updateDoc(userRef, { images: [...chef.images, imageURL] });
+    } else {
+      await updateDoc(userRef, { images: [imageURL] });
+    }
 
     fetchChef();
 
     showNotification("Изображение добавлено", "success");
-    setLoading(false);
+    setImagesLoading(false);
   };
 
   const [previewImage, setPreviewImage] = useState(
@@ -113,6 +119,17 @@ export default function EditProfile({ chefId }) {
   };
 
   const deleteImage = async (url) => {
+    if (imagesLoading) {
+      return;
+    }
+
+    if (chef?.images.length === 1) {
+      showNotification("Нельзя удалить все изображения", "danger");
+      return;
+    }
+
+    setImagesLoading(true);
+
     const regex = /image_\d+/;
     const match = url.match(regex)[0];
 
@@ -127,12 +144,17 @@ export default function EditProfile({ chefId }) {
     fetchChef();
 
     showNotification("Изображение удалено", "success");
+    setImagesLoading(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setBtnLoading(true);
+
+    if (!!chef?.images) {
+      showNotification(`Необходимо добавить изображения блюд`, "danger");
+    }
 
     try {
       await setDoc(doc(database, "chefs", chefId), chef);
@@ -235,18 +257,18 @@ export default function EditProfile({ chefId }) {
               </div>
             </div>
 
-            {/* Email */}
+            {/* instagram */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Почта <span style={{ color: "red" }}>*</span>
+                Instagram <span style={{ color: "red" }}>*</span>
               </label>
               <div>
                 <input
                   required
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="instagram"
                   placeholder="culinarium@gmail.com"
-                  value={chef.email}
+                  value={chef.instagram}
                   onChange={handleChange}
                 />
               </div>
@@ -272,10 +294,11 @@ export default function EditProfile({ chefId }) {
             {/* WhatsApp */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                WhatsApp
+                WhatsApp <span style={{ color: "red" }}>*</span>
               </label>
               <div>
                 <input
+                  required
                   type="text"
                   name="whatsapp"
                   placeholder="WhatsApp"
@@ -437,7 +460,7 @@ export default function EditProfile({ chefId }) {
             {/* Menu */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Меню
+                Меню <span style={{ color: "red" }}>*</span>
               </label>
               <div>
                 <input
@@ -494,7 +517,7 @@ export default function EditProfile({ chefId }) {
 
             <div className="col-md-10 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Изображения блюд
+                {imagesLoading ? "Обновление..." : "Изображения блюд"}
               </label>
               <br></br>
               <input
@@ -506,7 +529,10 @@ export default function EditProfile({ chefId }) {
 
               <div className="form-group multi-preview">
                 {(chef?.images || []).map((url, index) => (
-                  <div style={{ position: "relative", width: "max-content" }}>
+                  <div
+                    key={url}
+                    style={{ position: "relative", width: "max-content" }}
+                  >
                     <div
                       style={{
                         fontWeight: "bold",
@@ -519,8 +545,11 @@ export default function EditProfile({ chefId }) {
                         padding: "0 12px",
                         borderRadius: "50%",
                         cursor: "pointer",
+                        pointerEvents: imagesLoading ? "none" : "auto",
+                        opacity: imagesLoading ? 0.5 : 1,
                       }}
                       onClick={() => deleteImage(url)}
+                      disabled={imagesLoading}
                     >
                       X
                     </div>
