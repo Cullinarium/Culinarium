@@ -55,6 +55,18 @@ export default function PinContentTwo({ chef }) {
                 </button>
               </a>
             )}
+            {chef?.instagram && (
+              <a href={chef?.instagram} target="_blank">
+                <button
+                  className="button -md text-white w-1/1 mt-10"
+                  style={{
+                    backgroundColor: "#d94379",
+                  }}
+                >
+                  Instagram
+                </button>
+              </a>
+            )}
             <button
               onClick={() => setIsOpen(true)}
               className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10"

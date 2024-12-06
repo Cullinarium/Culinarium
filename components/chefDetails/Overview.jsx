@@ -121,17 +121,21 @@ export default function Overview({ chef }) {
                   График работы: {chef?.workSchedule ? chef?.workSchedule : "-"}
                 </p>
               </div>
-
-              <div className="d-flex items-center">
-                <div className="d-flex justify-center items-center border-light rounded-full size-20 mr-10">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    style={{ transform: "scale(0.7)", opacity: "0.7" }}
-                  />
-                </div>
-                <p>Меню: {chef?.menu}</p>
-              </div>
             </div>
+          </div>
+          <div>
+            <div className="d-flex items-center">
+              <div className="d-flex justify-center items-center border-light rounded-full size-20 mr-10">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  style={{ transform: "scale(0.7)", opacity: "0.7" }}
+                />
+              </div>
+              <p>Меню:</p>
+            </div>
+            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+              {chef?.menu}
+            </pre>
           </div>
         </div>
       </div>

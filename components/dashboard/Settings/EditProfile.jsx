@@ -312,11 +312,10 @@ export default function EditProfile({ chefId }) {
             {/* Work Experience */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Опыт работы <span style={{ color: "red" }}>*</span>
+                Опыт работы
               </label>
               <div>
                 <input
-                  required
                   type="text"
                   name="workExperience"
                   placeholder="Количество лет работы в качестве повара"
@@ -329,11 +328,10 @@ export default function EditProfile({ chefId }) {
             {/* Main Cuisine */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Основная кухня <span style={{ color: "red" }}>*</span>
+                Основная кухня
               </label>
               <div>
                 <input
-                  required
                   type="text"
                   name="mainCuisines"
                   placeholder="Французская, итальянская, японская кухня"
@@ -378,11 +376,10 @@ export default function EditProfile({ chefId }) {
             {/* Languages */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Языки <span style={{ color: "red" }}>*</span>
+                Языки
               </label>
               <div>
                 <input
-                  required
                   type="text"
                   name="languages"
                   placeholder="Кыргызский, русский, английский"
@@ -395,14 +392,13 @@ export default function EditProfile({ chefId }) {
             {/* Minimum Order Price */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Минимальная цена заказа <span style={{ color: "red" }}>*</span>
+                Средняя цена за одного человека
               </label>
               <div>
                 <input
-                  required
                   type="text"
                   name="minOrderPrice"
-                  placeholder="Минимальная стоимость услуг повара за одно мероприятие"
+                  placeholder="Средняя цена за одного человека"
                   value={chef.minOrderPrice}
                   onChange={handleChange}
                 />
@@ -461,16 +457,15 @@ export default function EditProfile({ chefId }) {
             {/* Menu */}
             <div className="col-md-6 col-12">
               <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                Меню <span style={{ color: "red" }}>*</span>
+                Меню
               </label>
               <div>
-                <input
+                <textarea
                   type="text"
                   name="menu"
                   placeholder="Список блюд"
                   value={chef.menu}
                   onChange={handleChange}
-                  required
                 />
               </div>
             </div>
